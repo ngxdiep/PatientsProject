@@ -33,8 +33,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
     @NamedQuery(name = "History.findAll", query = "SELECT h FROM History h")
     , @NamedQuery(name = "History.findById", query = "SELECT h FROM History h WHERE h.id = :id")
     , @NamedQuery(name = "History.findByDatetime", query = "SELECT h FROM History h WHERE h.datetime = :datetime")
-    , @NamedQuery(name = "History.findByContentchange", query = "SELECT h FROM History h WHERE h.contentchange = :contentchange")})
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@historyId")
+   })
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@historyId")
 public class History implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,15 +46,15 @@ public class History implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "datetime")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date datetime;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "contentchange")
-    private String contentchange;
+    
+    
+    
     @JoinColumn(name = "treatment_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+   @ManyToOne(optional = false)
     private Treatment treatmentId;
 
     public History() {
@@ -64,10 +64,10 @@ public class History implements Serializable {
         this.id = id;
     }
 
-    public History(Integer id, Date datetime, String contentchange) {
+    public History(Integer id, Date datetime) {
         this.id = id;
         this.datetime = datetime;
-        this.contentchange = contentchange;
+       
     }
 
     public Integer getId() {
@@ -86,14 +86,7 @@ public class History implements Serializable {
         this.datetime = datetime;
     }
 
-    public String getContentchange() {
-        return contentchange;
-    }
-
-    public void setContentchange(String contentchange) {
-        this.contentchange = contentchange;
-    }
-
+    
     public Treatment getTreatmentId() {
         return treatmentId;
     }

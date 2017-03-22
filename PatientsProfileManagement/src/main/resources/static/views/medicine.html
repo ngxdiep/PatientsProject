@@ -117,11 +117,13 @@
                         </td>
                         <td class="col-xs-4">
                            <button type="button" ng-click="getTypeOne(typemedicine.id)" class="btn btn-primary" 
-                              data-toggle="modal" data-target="#TypeMedicineModal">
+                              data-toggle="modal" data-target="#TypeMedicineModal"
+                              data-toggle="tooltip" title="Update TypeMedicine">
                            <span><i class="fa fa-wrench" aria-hidden="true"></i></i></span>
                            </button>
                            <button ng-click="deleteTypeMedicine(typemedicine.id)"
-                              class="glyphicon glyphicon-trash btn btn-danger"></button>
+                              class="glyphicon glyphicon-trash btn btn-danger"
+                              data-toggle="tooltip" title="Delete TypeMedicine"></button>
                         </td>
                      </tr>
                   </tbody>
@@ -189,11 +191,12 @@
                   <td>{{medicine.dosage}}</td>
                   <td>
                      <button type="button" ng-click="getOne(medicine.id)" class="btn btn-primary" 
-                        data-toggle="modal" data-target="#MedicineModal">
+                        data-toggle="modal" data-target="#MedicineModal" 
+                        data-toggle="tooltip" title="Update Medicine">
                      <span><i class="fa fa-wrench" aria-hidden="true"></i></span>
                      </button>
                      <button ng-click="deleteMedicine(medicine.id)"
-                        data-toggle="tooltip" title="Delete Medicine!"
+                        data-toggle="tooltip" title="Delete Medicine"
                         class="glyphicon glyphicon-trash btn btn-danger"></button>
                   </td>
                </tr>

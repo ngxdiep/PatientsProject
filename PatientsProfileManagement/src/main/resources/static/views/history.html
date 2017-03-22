@@ -1,0 +1,80 @@
+<!-- Content Patient -->
+<section class="content-header">
+	<h1>
+		History Management <small>Control panel</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Patient</li>
+	</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+	<div class="x_panel">
+		<div class="x_title">
+			<h1>History</h1>
+		</div>
+
+		<!-- Search -->
+		<div class="col-md-12 col-sm-12 col-xs-12 none-padding">
+			<div class="col-md-8 col-sm-8 col-xs-12 none-padding">
+				<div class="input-group">
+					<div class="input-group-btn">
+						<button type="submit" class="btn btn-danger">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</button>
+					</div>
+					<input ng-model="search" class="form-control" type="text"
+						placeholder="Search here...">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="x_content">
+			<!-- LIST History-->
+			<div class="box box-primary">
+				<div class="box-header">
+					<h3 class="box-title">List History</h3>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Patient's Name</th>
+								<th>Doctor's Name</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								dir-paginate="history in historys|filter:search|itemsPerPage:10">
+
+								<td>{{history.id}}</td>
+								 <td>{{history.treatmentId.patientId.name}}</td> 
+								 <td>{{history.treatmentId.doctorId.name}}</td> 
+								<td>{{history.datetime | date : "yyyy-MM-dd ---- HH:mm:ss"}}</td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /.box-body -->
+			</div>
+			<!-- Pagination -->
+			<div class="align">
+				<dir-pagination-controls max-size="5" direction-links="true"
+					boundary-links="true"> </dir-pagination-controls>
+			</div>
+		</div>
+	</div>
+	<!--end table-->
+</section>
+
+
+
+
+

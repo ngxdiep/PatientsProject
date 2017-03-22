@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
     , @NamedQuery(name = "Treatment.findByDate", query = "SELECT t FROM Treatment t WHERE t.date = :date")
     , @NamedQuery(name = "Treatment.findByFile", query = "SELECT t FROM Treatment t WHERE t.file = :file")
     , @NamedQuery(name = "Treatment.findByPrescription", query = "SELECT t FROM Treatment t WHERE t.prescription = :prescription")})
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@treatmentId")
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@treatmentId")
 
 public class Treatment implements Serializable {
 
@@ -82,7 +82,7 @@ public class Treatment implements Serializable {
     //@JsonManagedReference
     private Patient patientId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatmentId")
-    //@JsonIgnoreProperties("historyList")
+    @JsonBackReference
     private List<History> historyList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatmentId")
     //@JsonIgnoreProperties("treatmentDetailList")
@@ -156,11 +156,11 @@ public class Treatment implements Serializable {
     @XmlTransient
     public List<History> getHistoryList() {
         return historyList;
-    }
+   }
 
     public void setHistoryList(List<History> historyList) {
         this.historyList = historyList;
-    }
+   }
 
     @XmlTransient
     public List<TreatmentDetail> getTreatmentDetailList() {

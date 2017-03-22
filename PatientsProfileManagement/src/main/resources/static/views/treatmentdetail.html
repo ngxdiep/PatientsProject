@@ -150,7 +150,10 @@
 							<td>{{treatmentdt.medicineId.name}}</td>
 							<td>{{treatmentdt.diseases}}</td>
 							<td>{{treatmentdt.medicineId.dosage}}</td>
-							<td><button ng-click="deleteTreatmentDetail(treatmentdt.id)"  class="glyphicon glyphicon-trash btn btn-danger" ></button></td>
+							<td><button ng-click="deleteTreatmentDetail(treatmentdt.id)"  class="glyphicon glyphicon-trash btn btn-danger" 
+							data-toggle="tooltip" title="Delete Medicine"
+							
+							></button></td>
 						 </tr>
 					  </tbody>
 				   </table>
@@ -207,7 +210,8 @@
                         <td>{{allergic.medicineId.name}}</td>
                         <td>
                            <button ng-click="deleteAllergic(allergic.id)"
-                              class="glyphicon glyphicon-trash btn btn-danger"></button>
+                              class="glyphicon glyphicon-trash btn btn-danger"
+                              data-toggle="tooltip" title="Delete Medicine"></button>
                         </td>
                      </tr>
                   </tbody>
