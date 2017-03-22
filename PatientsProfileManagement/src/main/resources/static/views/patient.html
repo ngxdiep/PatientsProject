@@ -10,6 +10,22 @@
    </ol>
 </section>
 
+<span th:text="${#authorization.expression('isAuthenticated()')} ? 
+               'the user is logged in' : 
+               'the user is NOT logged in'">
+</span>
+<div sec:authentication="name">fasdf</div> <!-- works fine -->
+<div sec:authentication="principal.authorities">fdsa</div> <!-- works fine -->
+
+<div sec:authorize="isAuthenticated()">
+  This content is only shown to authenticated users.
+</div>
+<div sec:authorize="hasAuthority('[admin]')">
+  This content is only shown to administrators.
+</div>
+<div sec:authorize="hasAuthority('[doctor]')">
+  This content is only shown to users.
+</div>
 <!-- Main content -->
 <section class="content">
    <div class="x_panel">
@@ -156,7 +172,7 @@
             <span><i class="fa fa-refresh" aria-hidden="true"></i></span>
             Clear
             </button>
-            <button type="submit" ng-click="updatePatient(curentPatient.id,curentPatient)" class="btn btn-success btn-in-modal">
+            <button type="submit" ng-click="updatePatient(curentPatient.id,curentPatient)" data-dismiss="modal" class="btn btn-success btn-in-modal">
             <span><i class="glyphicon glyphicon-floppy-save" aria-hidden="true"></i></span>
             Submit
             </button>
@@ -227,7 +243,7 @@
             <span><i class="fa fa-refresh" aria-hidden="true"></i></span>
             Clear
             </button>
-            <button type="submit" ng-click="createPatient()" ng-disabled="createPatienta.$pristine || (createPatienta.$dirty && createPatienta.$invalid)" class="btn btn-success btn-in-modal">
+            <button type="submit" ng-click="createPatient()" data-dismiss="modal" ng-disabled="createPatienta.$pristine || (createPatienta.$dirty && createPatienta.$invalid)" class="btn btn-success btn-in-modal">
             <span><i class="glyphicon glyphicon-floppy-save" aria-hidden="true"></i></span>
             Submit
             </button>

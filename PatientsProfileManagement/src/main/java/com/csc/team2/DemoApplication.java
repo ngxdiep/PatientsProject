@@ -11,10 +11,7 @@ import com.csc.team2.controller.UploadingController;
 public class DemoApplication {	
 
 	public static void main(String[] args) {
-		new File(UploadingController.uploadingdir).mkdirs();
 		SpringApplication.run(DemoApplication.class, args);
 		
-	
-
 	}
 }
