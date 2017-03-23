@@ -48,16 +48,50 @@ public class History implements Serializable {
     @Column(name = "datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datetime;
-    @Basic(optional = false)
-    @NotNull
+//    @Basic(optional = false)
+//    @NotNull
     
     
     
-    @JoinColumn(name = "treatment_id", referencedColumnName = "id")
-   @ManyToOne(optional = false)
-    private Treatment treatmentId;
+//    @JoinColumn(name = "treatment_id", referencedColumnName = "id")
+//   @ManyToOne(optional = false)
+   // private Treatment treatmentId;
+    
+    @Column(name = "patient")
+    private String patient;
+    
+    @Column(name = "doctor")
+    private  String doctor;
+    
+    @Column(name = "treatment_id")
+    private  Integer treatment_id;
+    
 
-    public History() {
+    public String getPatient() {
+		return patient;
+	}
+
+	public void setPatient(String patient) {
+		this.patient = patient;
+	}
+
+	public String getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(String doctor) {
+		this.doctor = doctor;
+	}
+
+	public Integer getTreatment_id() {
+		return treatment_id;
+	}
+
+	public void setTreatment_id(Integer treatment_id) {
+		this.treatment_id = treatment_id;
+	}
+
+	public History() {
     }
 
     public History(Integer id) {
@@ -87,13 +121,13 @@ public class History implements Serializable {
     }
 
     
-    public Treatment getTreatmentId() {
-        return treatmentId;
-    }
-
-    public void setTreatmentId(Treatment treatmentId) {
-        this.treatmentId = treatmentId;
-    }
+//    public Treatment getTreatmentId() {
+//        return treatmentId;
+//    }
+//
+//    public void setTreatmentId(Treatment treatmentId) {
+//        this.treatmentId = treatmentId;
+//    }
 
     @Override
     public int hashCode() {

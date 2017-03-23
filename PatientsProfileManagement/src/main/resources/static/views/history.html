@@ -44,6 +44,7 @@
 						<thead>
 							<tr>
 								<th>ID</th>
+								<th>Treatment ID</th>
 								<th>Patient's Name</th>
 								<th>Doctor's Name</th>
 								<th>Date</th>
@@ -54,8 +55,9 @@
 								dir-paginate="history in historys|filter:search|itemsPerPage:10">
 
 								<td>{{history.id}}</td>
-								 <td>{{history.treatmentId.patientId.name}}</td> 
-								 <td>{{history.treatmentId.doctorId.name}}</td> 
+								<td>{{history.treatment_id}}</td>
+								 <td>{{history.patient}}</td> 
+								 <td>{{history.doctor}}</td> 
 								<td>{{history.datetime | date : "yyyy-MM-dd ---- HH:mm:ss"}}</td>
 
 							</tr>

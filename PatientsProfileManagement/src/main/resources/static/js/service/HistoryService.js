@@ -9,8 +9,15 @@ app.factory('historyService', function($http){
 	        return response.data;
 	      });
   }
+  var createHistory = function(history){
+	  return $http.post("http://localhost:8080/history",history)
+	  .then(function(response){
+			return response.data;
+		});
+  }
 	    return {
 	  	  getHistory:getHistory,
+	  	  createHistory: createHistory,
 	  	  
 	    }
   }); 

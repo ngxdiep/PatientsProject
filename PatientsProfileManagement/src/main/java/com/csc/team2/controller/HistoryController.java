@@ -40,16 +40,16 @@ public class HistoryController {
 	
 	//=========================Find History By Treatment Id===========
 	
-	@RequestMapping(value="/history/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> getHistorryBytreatmentId(@PathVariable("id") int id){
-		logger.info("Fetching Medicine with id {}", id);
-		List<History> history = historyService.findBytreatmentId(id);
-		if(history==null){
-			 logger.error("Patient with id {} not found.", id);
-			 return new ResponseEntity(HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<List<History>>(history, HttpStatus.OK);
-	}
+//	@RequestMapping(value="/history/{id}", method = RequestMethod.GET)
+//	public ResponseEntity<?> getHistorryBytreatmentId(@PathVariable("id") int id){
+//		logger.info("Fetching Medicine with id {}", id);
+//		List<History> history = historyService.findBytreatmentId(id);
+//		if(history==null){
+//			 logger.error("Patient with id {} not found.", id);
+//			 return new ResponseEntity(HttpStatus.NOT_FOUND);
+//		}
+//		return new ResponseEntity<List<History>>(history, HttpStatus.OK);
+//	}
 	
 	// ======================== Create History ========================
 

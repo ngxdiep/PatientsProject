@@ -81,9 +81,9 @@ public class Treatment implements Serializable {
     @ManyToOne(optional = false)
     //@JsonManagedReference
     private Patient patientId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatmentId")
-    @JsonBackReference
-    private List<History> historyList;
+  //  @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatmentId")
+ //   @JsonBackReference
+ //   private List<History> historyList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatmentId")
     //@JsonIgnoreProperties("treatmentDetailList")
     private List<TreatmentDetail> treatmentDetailList;
@@ -153,14 +153,14 @@ public class Treatment implements Serializable {
         this.patientId = patientId;
     }
 
-    @XmlTransient
-    public List<History> getHistoryList() {
-        return historyList;
-   }
-
-    public void setHistoryList(List<History> historyList) {
-        this.historyList = historyList;
-   }
+//    @XmlTransient
+//    public List<History> getHistoryList() {
+//        return historyList;
+//   }
+//
+//    public void setHistoryList(List<History> historyList) {
+//        this.historyList = historyList;
+//   }
 
     @XmlTransient
     public List<TreatmentDetail> getTreatmentDetailList() {

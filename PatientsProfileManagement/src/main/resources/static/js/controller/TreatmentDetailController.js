@@ -1,6 +1,6 @@
 var app = angular.module('myApp');
 app.controller('treatmentDetailController', function(
-        $scope, $interval, $location,$http,$routeParams,treatmentDetailService,allergicService,fileUpload) {
+        $scope, $interval, $location,$http,$routeParams,treatmentDetailService,allergicService,fileUpload, historyService,treatmentService) {
 	
 	
 	
@@ -26,11 +26,21 @@ app.controller('treatmentDetailController', function(
 			
 	}
 	
+	$scope.history ={
+			datetime:"",
+		    patient: "",
+		    doctor: "",
+		    treatment_id: ""
+			
+	}
+	
 	$http.get("http://localhost:8080/treatment/" +$routeParams.treatmentId).then(function(response) {
 		$scope.treatment = response.data;
 		$scope.treatment.patientId.dob = new Date(response.data.patientId.dob);
 	});
-	
+	$http.get("http://localhost:8080/userProfile").then(function(response) {
+		$scope.doctor = response.data;
+	});
 	
 ////=========Create allergics list======================================
 	$scope.createAllergics = function(){
@@ -50,6 +60,9 @@ app.controller('treatmentDetailController', function(
 	
 	
 	var createAllergicSuccess = function(data) {
+		
+		$scope.createHistory();
+		
 		bootbox.alert({
 			message: "Add New Allergic Success!",
 			title: "MESSAGE",
@@ -92,6 +105,7 @@ app.controller('treatmentDetailController', function(
 			title: "MESSAGE",
 		    size: 'small'
 		});
+		
 		$http.get("http://localhost:8080/treatment/" +$routeParams.treatmentId).then(function(response) {
 			$scope.treatment = response.data;
 			$scope.treatment.patientId.dob = new Date(response.data.patientId.dob);
@@ -112,6 +126,9 @@ app.controller('treatmentDetailController', function(
 		treatmentDetailService.deleteTreatmentDetail(id).then(deleteTreatmentDetailSuccess,deleteTreatmentDetailError)
 	}
 	var deleteTreatmentDetailSuccess = function(data) {
+		
+		$scope.createHistory();
+		
 		bootbox.alert({
 			message: "Delete Treatment Detail Success!",
 			title: "MESSAGE",
@@ -121,6 +138,10 @@ app.controller('treatmentDetailController', function(
 			$scope.treatment = response.data;
 			$scope.treatment.patientId.dob = new Date(response.data.patientId.dob);
 		});
+		
+		
+		
+		
 	};
 	var deleteTreatmentDetailError = function(error) {
 		bootbox.alert({
@@ -129,12 +150,28 @@ app.controller('treatmentDetailController', function(
 		    size: 'small'
 		});
 	};
-	
+	////===========================History============================
+	$scope.createHistory = function(){
+		//$scope.medicine.typeId = $scope.medicine.object;
+		$scope.history.treatment_id = $scope.treatment.id;
+		$scope.history.doctor = $scope.doctor.name;
+		$scope.history.patient = $scope.treatment.patientId.name;
+		$scope.history.datetime = new Date();
+		historyService.createHistory($scope.history).then(createHistorySuccess,createHistoryError);
+	};
+	var createHistorySuccess = function(data) {
+
+
+	};
+	var createHistoryError = function(data) {
+
+	};
 ////==========delete allergic==========================================
 	$scope.deleteAllergic = function(id){
 		allergicService.dleteAllergic(id).then(deleteAllergicSuccess,deleteAllergiclError)
 	}
 	var deleteAllergicSuccess = function(data) {
+		$scope.createHistory();
 		bootbox.alert({
 			message: "Delete Allergic Success!",
 			title: "MESSAGE",
@@ -152,12 +189,13 @@ app.controller('treatmentDetailController', function(
 		    size: 'small'
 		});
 	};
-	
+
 ////==========contact chips for prescription and allergics=============	
     $scope.querySearch = querySearch;
     $scope.medicines = [];
 	$scope.allergics = [];
 	$scope.filterSelected = true;
+	
 
     function querySearch (query) {
       var result;
@@ -242,6 +280,7 @@ app.service('fileUpload', ['$http', function ($https) {
             })
          
             .success(function(){
+            	$scope.createHistory();
             	bootbox.alert({
         			message: "Upload File Success!",
         			title: "MESSAGE",
