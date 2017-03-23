@@ -27,7 +27,12 @@ app.config(function($routeProvider) {
 	.when('/treatment/:treatmentId', {
 		templateUrl : '/views/treatmentdetail.html',
 		controller : "treatmentDetailController"
+	})
+	.when('/history', {
+		templateUrl : '/views/history.html',
+		controller : "historyController"
 	});
+
 
 	/*
 	 * .otherwise( { redirectTo: '/'} );
