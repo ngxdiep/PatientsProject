@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
     , @NamedQuery(name = "Medicine.findByMfg", query = "SELECT m FROM Medicine m WHERE m.mfg = :mfg")
     , @NamedQuery(name = "Medicine.findByProducer", query = "SELECT m FROM Medicine m WHERE m.producer = :producer")
     , @NamedQuery(name = "Medicine.findByDosage", query = "SELECT m FROM Medicine m WHERE m.dosage = :dosage")})
-@JsonIdentityInfo(generator=ObjectIdGenerators.UUIDGenerator.class, property="@medicineId",scope = Medicine.class)
+//@JsonIdentityInfo(generator=ObjectIdGenerators.UUIDGenerator.class, property="@medicineId",scope = Medicine.class)
 public class Medicine implements Serializable {
 
     private static final long serialVersionUID = 1L;

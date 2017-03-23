@@ -145,11 +145,14 @@ app.controller('treatmentController', function(
 	var getOneSuccess = function(data) {
 		$scope.currentTreatment = data;
 		$scope.currentTreatment.date = new Date();
+		
 	};
 	var getOneError = function(error) {
 	};
 ////==========Update Treatment ==================================
 	$scope.updateTreatment = function(id,treatment){
+		treatment.doctorId = $scope.doctor;
+//		treatment.doctorId= $scope.doctor_id_current;
 		/*if($scope.currentTreatment.doctorId.id==$scope.doctor.id){*/
 			treatmentService.updateTreatment(id,treatment).then(updateSuccess,updateError);
 /*		}

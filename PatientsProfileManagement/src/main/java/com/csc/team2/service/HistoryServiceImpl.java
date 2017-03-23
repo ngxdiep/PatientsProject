@@ -21,10 +21,10 @@ public class HistoryServiceImpl implements IHistoryService {
 
 
 
-	@Override
-	public List<History> findBytreatmentId(int id) {
-		return historyRepos.findByTreatmentId(id);
-	}
+//	@Override
+//	public List<History> findBytreatmentId(int id) {
+//		return historyRepos.findByTreatmentId(id);
+//	}
 
 	@Override
 	public void saveHistory(History history) {
