@@ -88,11 +88,14 @@
                         <td>{{patient.sex }}</td>
                         <td>{{patient.dob}}</td>
                         <td>
-                           <button type="button" ng-click="getOne(patient.id)" class="btn btn-primary" data-toggle="modal" data-target="#modalUpdatePatient">
+                           <button type="button" ng-click="getOne(patient.id)" 
+                           class="btn btn-primary" data-toggle="modal"
+                            data-target="#modalUpdatePatient"
+                           data-toggle="tooltip" title="Update Patient">
                            <span><i class="fa fa-wrench" aria-hidden="true"></i></span>
                            </button>
                            <button ng-click="deletePatient(patient.id)"
-                              data-toggle="tooltip" title="Delete Patient!"
+                              data-toggle="tooltip" title="Delete Patient" 
                               class="glyphicon glyphicon-trash btn btn-danger"></button>
                         </td>
                      </tr>

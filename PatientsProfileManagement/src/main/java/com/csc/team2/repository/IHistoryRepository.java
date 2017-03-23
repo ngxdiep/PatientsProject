@@ -10,6 +10,6 @@ import com.csc.team2.model.History;
 
 @Repository
 public interface IHistoryRepository extends CrudRepository<History, Integer> {
-	List<History> findByTreatmentId(int id);
+//	List<History> findByTreatmentId(int id);
 
 }

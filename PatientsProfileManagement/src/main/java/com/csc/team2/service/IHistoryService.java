@@ -10,7 +10,7 @@ import com.csc.team2.model.History;
 public interface IHistoryService {
 	History findById(int id);
 	 
-	List<History> findBytreatmentId(int id);
+//	List<History> findBytreatmentId(int id);
  
     void saveHistory(History history);
  
